@@ -24,7 +24,7 @@ public class BrowserDriverFactory {
 
     public WebDriver createDriver() {
         // Create driver
-        log.info("Create driver: " + browser);
+
 
         switch (browser) {
             case "chrome":
@@ -68,7 +68,7 @@ public class BrowserDriverFactory {
     }
 
     public WebDriver createChromeWithProfile(String profile) {
-        log.info("Starting chrome driver with profile: " + profile);
+
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("user-data-dir=src/main/resources/Profiles/" + profile);
 

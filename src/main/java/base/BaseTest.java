@@ -17,7 +17,7 @@ import java.util.logging.LogManager;
 public class BaseTest {
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
+
     protected Logger log;
 
     protected String testSuiteName;
@@ -56,7 +56,7 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        log.info("Close driver");
+
         // Close browser
         driver.quit();
     }

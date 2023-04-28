@@ -13,6 +13,9 @@ import java.time.Duration;
 public class BasePage {
     public WebDriver driver;
 
+    BasePage(WebDriver driver){
+        this.driver = driver;
+    }
     public void openUrl(String url){
         driver.get(url);
     }

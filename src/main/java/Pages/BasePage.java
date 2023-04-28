@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
@@ -35,21 +35,24 @@ public class BasePage {
 
     private void waitFor(ExpectedCondition<WebElement> condition, Duration timeOutInSeconds) {
         timeOutInSeconds = timeOutInSeconds != null ? timeOutInSeconds : Duration.ofSeconds(30);
-        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-        wait.until(condition);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver);
+        wait.withTimeout(timeOutInSeconds)
+            .pollingEvery(Duration.ofSeconds(1))
+            .until(condition);
+
+
+
     }
 
     protected void waitForVisibilityOf(By locator, Integer... timeOutInSeconds) {
-        int attempts = 0;
-        while (attempts < 2) {
-            try {
-                waitFor(ExpectedConditions.visibilityOfElementLocated(locator),
-                        Duration.ofDays((timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null)));
-                break;
-            } catch (StaleElementReferenceException e) {
-            }
-            attempts++;
+
+        try {
+            waitFor(ExpectedConditions.visibilityOfElementLocated(locator),
+                    Duration.ofDays((timeOutInSeconds.length > 0 ? timeOutInSeconds[0] : null)));
+
+        } catch (StaleElementReferenceException e) {
         }
+
     }
 
 }

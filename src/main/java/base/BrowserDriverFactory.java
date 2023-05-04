@@ -67,15 +67,7 @@ public class BrowserDriverFactory {
         return driver.get();
     }
 
-    public WebDriver createChromeWithProfile(String profile) {
 
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("user-data-dir=src/main/resources/Profiles/" + profile);
-
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        driver.set(new ChromeDriver(chromeOptions));
-        return driver.get();
-    }
 
 
 

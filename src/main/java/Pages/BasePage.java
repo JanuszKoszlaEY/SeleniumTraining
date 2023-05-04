@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 
-public class BasePage {
+public abstract class BasePage {
     public WebDriver driver;
 
     BasePage(WebDriver driver){

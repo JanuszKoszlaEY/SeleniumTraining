@@ -27,18 +27,15 @@ public class BaseTest {
 
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp(Method method, @Optional("chrome") String browser, @Optional String profile,
+    public void setUp(Method method, @Optional("chrome") String browser,
                       @Optional String deviceName, ITestContext ctx) {
         String testName = ctx.getCurrentXmlTest().getName();
 
 
         BrowserDriverFactory factory = new BrowserDriverFactory(browser, log);
-        if (profile != null) {
-            driver = factory.createChromeWithProfile(profile);
 
-        } else {
             driver = factory.createDriver();
-        }
+
 
         // This sleep here is for instructor only. Students don't need this here
         try {

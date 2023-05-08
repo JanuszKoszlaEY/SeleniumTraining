@@ -7,6 +7,12 @@
 	
 	<test name="PositiveLogInTest-CH">
 		<parameter name="browser" value="chrome"></parameter>
+		<groups>
+			<run>
+				<include name="functest"/>
+
+			</run>
+		</groups>
 		<classes>
 			<class name="LoginTest" />
 		</classes>

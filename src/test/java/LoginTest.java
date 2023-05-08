@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(groups = { "functest"})
     public void loginTest(){
         MainPage mainPage = new MainPage(driver,log);
         mainPage.startPage();
@@ -17,6 +17,7 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver,log);
         loginPage.Login("tomsmith","SuperSecretPassword!");
+        // Assert
 
     }
 }

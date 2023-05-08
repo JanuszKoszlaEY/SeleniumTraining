@@ -33,6 +33,7 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -50,6 +51,7 @@
                     </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/TestSuites/TestSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/TestSuites/Groups.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>

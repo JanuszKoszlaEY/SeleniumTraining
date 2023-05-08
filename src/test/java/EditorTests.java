@@ -9,9 +9,8 @@ import org.testng.annotations.Test;
 public class EditorTests extends BaseTest {
 
 
-	@Test
+	@Test(groups = {"g1"})
 	public void defaultEditorValueTest() {
-
 
 		// open main page
 		MainPage mainPage = new MainPage(driver, log);

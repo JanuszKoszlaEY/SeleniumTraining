@@ -1,0 +1,34 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuite" verbose="1" parallel="tests" thread-count="4">
+	<listeners>
+		<listener class-name="base.TestListener"></listener>
+	</listeners>
+	
+	<test name="GroupTests">
+		<parameter name="username" value="incorrectUsername"></parameter>
+		<parameter name="password" value="SuperSecretPassword!"></parameter>
+		<parameter name="expectedMessage" value="Your username is invalid!"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
+		<groups>
+
+			<run>
+				<include name="g1"></include>
+<!--				<exclude name="g1"></exclude>-->
+			</run>
+		</groups>
+		<classes>
+			<class name="NegativeLogInTests"></class>
+			<class name="LoginTest"></class>
+			<class name="EditorTests"></class>
+			<class name="LoginCopyTest">
+				<methods>
+					<include name="includedLoginTest"></include>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+
+	
+</suite>

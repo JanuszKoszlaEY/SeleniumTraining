@@ -1,9 +1,7 @@
 package Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -12,9 +10,11 @@ import java.time.Duration;
 
 public abstract class BasePage {
     public WebDriver driver;
+    public Logger log;
 
-    BasePage(WebDriver driver){
+    BasePage(WebDriver driver, Logger log){
         this.driver = driver;
+        this.log = log;
     }
     public void openUrl(String url){
         driver.get(url);
@@ -56,6 +56,16 @@ public abstract class BasePage {
         } catch (StaleElementReferenceException e) {
         }
 
+    }
+
+    public void scrollToBottom() {
+        log.info("Scrolling to the bottom of the page");
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+    }
+
+    protected void switchToFrame(By frameLocator) {
+        driver.switchTo().frame(find(frameLocator));
     }
 
 }

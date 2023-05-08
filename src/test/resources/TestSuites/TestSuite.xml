@@ -7,12 +7,7 @@
 	
 	<test name="PositiveLogInTest-CH">
 		<parameter name="browser" value="chrome"></parameter>
-		<groups>
-			<run>
-				<include name="functest"/>
 
-			</run>
-		</groups>
 		<classes>
 			<class name="LoginTest" />
 		</classes>
@@ -24,13 +19,8 @@
 		<parameter name="expectedMessage" value="Your username is invalid!"></parameter>
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
-			<class name="NegativeLogInTests">
-			</class>
+			<class name="NegativeLogInTests"></class>
 		</classes>
 	</test>
 	
-
-	
-
-
 </suite>

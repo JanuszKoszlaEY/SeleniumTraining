@@ -1,7 +1,9 @@
 package Pages;
 
+import Utilities.PropertyManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -11,10 +13,13 @@ import java.time.Duration;
 public abstract class BasePage {
     public WebDriver driver;
     public Logger log;
-
+    public String baseURL = PropertyManager.getInstance().getURL();
     BasePage(WebDriver driver, Logger log){
         this.driver = driver;
         this.log = log;
+    }
+    public void openUrl(){
+        driver.get(baseURL);
     }
     public void openUrl(String url){
         driver.get(url);
@@ -57,7 +62,15 @@ public abstract class BasePage {
         }
 
     }
+    protected void scrollToElement(By locator){
+        log.info("Scrolling to element");
+        WebElement element = driver.findElement(locator);
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element);
+        actions.perform();
+        waitForVisibilityOf(locator,2);
 
+    }
     public void scrollToBottom() {
         log.info("Scrolling to the bottom of the page");
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;

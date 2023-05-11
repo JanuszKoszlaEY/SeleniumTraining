@@ -18,8 +18,8 @@ public class EditorTests extends BaseTest {
 		
 		// Scroll to the bottom
 
-		mainPage.scrollToBottom();
-
+//		mainPage.scrollToBottom();
+		mainPage.scrollToEditorLocator();
 
 		// Click on WYSIWYG Editor link
 		EditorPage editorPage = mainPage.clickWYSIWYGEditorLink();

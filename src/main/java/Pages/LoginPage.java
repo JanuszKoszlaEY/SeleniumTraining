@@ -20,6 +20,7 @@ public class LoginPage extends BasePage{
         type(password,passwordLocator);
         click(buttonLocator);
 
+
     }
 
     public void negativeLogIn(String username, String password) {

@@ -8,9 +8,9 @@ public class PropertyManager {
     private static PropertyManager instance;
     private static final Object lock = new Object();
     private static String propertyFilePath = System.getProperty("user.dir")+
-            "src/main/resources/configuration.properties";
+            "/src/main/resources/configuration.properties";
     private static String url;
-    private static String headless;
+    private static Boolean headless;
     //Create a Singleton instance. We need only one instance of Property Manager.
     public static PropertyManager getInstance () {
         if (instance == null) {
@@ -34,13 +34,13 @@ public class PropertyManager {
         }
         //Get properties from configuration.properties
         url = prop.getProperty("url");
-        headless = prop.getProperty("headless");
+        headless = Boolean.valueOf(prop.getProperty("headless"));
 
     }
     public String getURL () {
         return url;
     }
-    public String isHeadless () {
+    public Boolean getHeadless () {
         return headless;
     }
 

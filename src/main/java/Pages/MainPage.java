@@ -14,9 +14,14 @@ public class MainPage extends BasePage{
     public MainPage(WebDriver driver, Logger log){super(driver,log);}
 
     public void startPage(){
-        openUrl("https://the-internet.herokuapp.com/");
+        openUrl();
+//        openUrl("https://the-internet.herokuapp.com/");
     }
 
+    public void scrollToEditorLocator(){
+        log.info("Scroll to editor locator");
+        super.scrollToElement(editorLinkLocator);
+    }
     public LoginPage clickFormAuthenticationLink(){
         click(authenticationLinkLocator);
         return new LoginPage(driver,log);

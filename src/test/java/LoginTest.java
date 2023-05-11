@@ -17,6 +17,7 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver, log);
         loginPage.Login("tomsmith", "SuperSecretPassword!");
+        takeScreenshot("PageLoggedIn");
         // Assert
 
     }

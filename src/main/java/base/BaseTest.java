@@ -1,9 +1,12 @@
 package base;
 
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+
+import Utilities.Utilities;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 
@@ -13,7 +16,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Method;
+
+import static Utilities.Utilities.getTodaysDate;
+
 
 public class BaseTest {
 
@@ -49,5 +57,24 @@ public class BaseTest {
 
         // Close browser
         driver.quit();
+    }
+
+    protected void takeScreenshot(String fileName) {
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        String path = System.getProperty("user.dir")
+                + File.separator + "test-output"
+                + File.separator + "screenshots"
+                + File.separator + getTodaysDate()
+                + File.separator + testSuiteName
+                + File.separator + testName
+                + File.separator + testMethodName
+                + File.separator + new Utilities().getSystemTime()
+                + " " + fileName + ".png";
+        try {
+            FileUtils.copyFile(scrFile, new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,0 +1,4 @@
+number,username,password,expectedErrorMessage
+1,"incorrectUsername","SuperSecretPassword!","Your username is invalid!"
+2,"incorrectUsername2","SuperSecretPassword2!","Your username is invalid!"
+3,"tomsmith", "SuperSecretPassword!",""

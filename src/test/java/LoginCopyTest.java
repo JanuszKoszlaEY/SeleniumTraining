@@ -19,7 +19,7 @@ public class LoginCopyTest extends BaseTest {
 
     }
 
-    @Test(priority = 2, groups = {"g1"})
+    @Test(priority = 1, groups = {"g1"})
     public void includedLoginTest() {
         MainPage mainPage = new MainPage(driver, log);
         mainPage.startPage();
@@ -32,7 +32,7 @@ public class LoginCopyTest extends BaseTest {
 
     }
 
-    @Test(priority = 1, groups = {"g1"})
+    @Test(priority = 3, groups = {"g1"})
     public void fakeLoginPriority1Test() {
         MainPage mainPage = new MainPage(driver, log);
         mainPage.startPage();

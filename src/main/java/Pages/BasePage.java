@@ -2,6 +2,8 @@ package Pages;
 
 import Utilities.PropertyManager;
 import org.apache.logging.log4j.Logger;
+import org.awaitility.Awaitility;
+import org.awaitility.core.ConditionTimeoutException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.logging.LogEntries;
@@ -81,6 +83,22 @@ public abstract class BasePage {
                     break;
                 }
             }
+        }
+    }
+
+    public void switchToNewWindow(){
+        String oldHandle = driver.getWindowHandle();
+
+        try {
+            Awaitility.await().atMost(Duration.ofSeconds(4)).pollInterval(Duration.ofSeconds(1))
+                    .until(() -> {
+                        String newHandle = driver.getWindowHandles().stream().findFirst().get();
+                        driver.switchTo().window(newHandle);
+                        return driver.getWindowHandle()!=oldHandle;
+                    });
+        } catch (ConditionTimeoutException e) {
+            throw new AssertionError("Timeout after " + 4 + " seconds. " +
+                    "Window not found" + e.getMessage());
         }
     }
 
